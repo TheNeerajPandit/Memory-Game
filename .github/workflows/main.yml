@@ -1,0 +1,17 @@
+name: Automated commit
+
+on:
+  schedule:
+    - cron: '47 3 * * *'
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Commit and push
+      run: |
+        git config --global user.email "neeraj.the.pandit@gmail.com"
+        git config --global user.name "Neeraj Pandit"
+        git commit --allow-empty -m "Automated commit"
+        git push
